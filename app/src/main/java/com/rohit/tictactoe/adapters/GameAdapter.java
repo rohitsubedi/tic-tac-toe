@@ -1,4 +1,4 @@
-package rohit.com.tictactoe.adapters;
+package com.rohit.tictactoe.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,8 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import rohit.com.tictactoe.R;
+
+import com.rohit.tictactoe.MainActivity;
+import com.rohit.tictactoe.R;
 
 import java.util.ArrayList;
 
@@ -30,16 +33,25 @@ public class GameAdapter extends ArrayAdapter<String> {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) this.context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View rowView = inflater.inflate(this.resource, parent, false);
 
-        final String value = this.values.get(position);
+        RelativeLayout box = (RelativeLayout) rowView.findViewById(R.id.each_grid);
+        String value = this.values.get(position);
         TextView text = (TextView) rowView.findViewById(R.id.grid_value);
 
         text.setText(String.valueOf(value));
+        box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((MainActivity) context).isHumanTurn()) {
+                    ((MainActivity) context).updateBoard(position);
+                }
+            }
+        });
 
         return rowView;
     }
