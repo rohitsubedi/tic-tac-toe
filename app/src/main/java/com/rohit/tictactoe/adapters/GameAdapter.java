@@ -49,6 +49,8 @@ public class GameAdapter extends ArrayAdapter<String> {
             public void onClick(View v) {
                 if (((MainActivity) context).isHumanTurn()) {
                     ((MainActivity) context).updateBoard(position);
+
+                    ((MainActivity) context).initiateComputerTurn();
                 }
             }
         });
