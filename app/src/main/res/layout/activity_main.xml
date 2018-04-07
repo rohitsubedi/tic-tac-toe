@@ -13,16 +13,29 @@
     <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
         <Button
+            android:id="@+id/play_with_computer"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/play_with_computer"
             android:background="@drawable/btn_shape"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:text="@string/play_with_computer"
             android:textColor="@color/white"
-            android:text="@string/play_with_computer"/>
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/create_room"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/play_with_computer"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_shape"
+            android:text="@string/create_room"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </RelativeLayout>
 </RelativeLayout>

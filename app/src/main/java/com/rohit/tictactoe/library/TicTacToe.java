@@ -1,4 +1,4 @@
-package com.rohit.tictactoe;
+package com.rohit.tictactoe.library;
 
 import java.util.ArrayList;
 
@@ -6,11 +6,11 @@ import java.util.ArrayList;
  * Created by developer on 03/04/18.
  */
 
-class TicTacToe {
+public class TicTacToe {
     private String player;
     private String oponent;
 
-    TicTacToe(String player, String oponent) {
+    public TicTacToe(String player, String oponent) {
         this.player = player;
         this.oponent = oponent;
     }
@@ -21,7 +21,7 @@ class TicTacToe {
      * @param values
      * @return boolean
      */
-    boolean movesLeft(ArrayList<String> values) {
+    public boolean movesLeft(ArrayList<String> values) {
         return values.contains("");
     }
 
@@ -31,7 +31,7 @@ class TicTacToe {
      * @param values
      * @return
      */
-    boolean gameFinished(ArrayList<String> values) {
+    public boolean gameFinished(ArrayList<String> values) {
         int winScore = this.winScore(values);
 
         return winScore == 10 || winScore == -10;
@@ -161,7 +161,7 @@ class TicTacToe {
      * @param values
      * @return int
      */
-    int findBestMove(ArrayList<String> values) {
+    public int findBestMove(ArrayList<String> values) {
         int bestPosition = -1;
         int bestValue = -1000;
 
