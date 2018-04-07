@@ -1,7 +1,5 @@
 package com.rohit.tictactoe;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 /**
@@ -11,19 +9,16 @@ import java.util.ArrayList;
 class TicTacToe {
     private String player;
     private String oponent;
-    private int boardSize;
 
-    TicTacToe(String player, String oponent, int boardSize) {
+    TicTacToe(String player, String oponent) {
         this.player = player;
         this.oponent = oponent;
-        this.boardSize = boardSize;
     }
 
     /**
      * Check if there are any moves left
      *
      * @param values
-     *
      * @return boolean
      */
     boolean movesLeft(ArrayList<String> values) {
@@ -50,30 +45,30 @@ class TicTacToe {
      */
     private int winScore(ArrayList<String> values) {
         // Check Row for win Condition for x or o
-        for (int i = 0; i < this.boardSize; i++) {
+        for (int i = 0; i < 3; i++) {
             boolean allSame = true;
 
-            for (int j = 0; j < this.boardSize; j++) {
-                if (!values.get(i * this.boardSize).equals(values.get((i * this.boardSize) + j))) {
+            for (int j = 0; j < 3; j++) {
+                if (!values.get(i * 3).equals(values.get((i * 3) + j))) {
                     allSame = false;
                 }
             }
 
             if (allSame) {
-                if (values.get(i * this.boardSize).equals(this.player)) {
+                if (values.get(i * 3).equals(this.player)) {
                     return 10;
-                } else if (values.get(i * this.boardSize).equals(this.oponent)) {
+                } else if (values.get(i * 3).equals(this.oponent)) {
                     return -10;
                 }
             }
         }
 
         // Check Column for win Condition for x or o
-        for (int i = 0; i < this.boardSize; i++) {
+        for (int i = 0; i < 3; i++) {
             boolean allSame = true;
 
-            for (int j = 0; j < this.boardSize; j++) {
-                if (!values.get(i).equals(values.get((j * this.boardSize) + i))) {
+            for (int j = 0; j < 3; j++) {
+                if (!values.get(i).equals(values.get((j * 3) + i))) {
                     allSame = false;
                 }
             }
@@ -132,7 +127,7 @@ class TicTacToe {
         if (isMax) {
             int best = -1000;
 
-            for (int i = 0; i < Math.pow(this.boardSize, 2); i++) {
+            for (int i = 0; i < 9; i++) {
                 if (values.get(i).isEmpty()) {
                     values.set(i, this.player);
 
@@ -146,7 +141,7 @@ class TicTacToe {
         } else {
             int best = 1000;
 
-            for (int i = 0; i < Math.pow(this.boardSize, 2); i++) {
+            for (int i = 0; i < 9; i++) {
                 if (values.get(i).isEmpty()) {
                     values.set(i, this.oponent);
 
@@ -166,12 +161,11 @@ class TicTacToe {
      * @param values
      * @return int
      */
-    int findBestMove(ArrayList<String> values)
-    {
+    int findBestMove(ArrayList<String> values) {
         int bestPosition = -1;
         int bestValue = -1000;
 
-        for (int i = 0; i < Math.pow(this.boardSize, 2); i++) {
+        for (int i = 0; i < 9; i++) {
             if (values.get(i).isEmpty()) {
                 values.set(i, this.player);
 

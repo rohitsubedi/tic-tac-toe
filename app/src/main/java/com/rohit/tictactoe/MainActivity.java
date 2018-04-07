@@ -1,15 +1,14 @@
 package com.rohit.tictactoe;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import com.rohit.tictactoe.adapters.GameAdapter;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     GridView mainBoard;
@@ -19,25 +18,31 @@ public class MainActivity extends AppCompatActivity {
     int turn = 1; // 1 for human and 0 for computer
     String human = "x";
     String computer = "o";
-    int boardSize = 3;
 
     /**
      * Initiate the Board for Tic Tac Toe
-     *
-     * @param turn
      */
-    private void initiateBoard(int turn) {
+    private void initiateBoard() {
         values = new ArrayList<>();
 
-        for (int i = 0; i < Math.pow(this.boardSize, 2); i++) {
+        for (int i = 0; i < 9; i++) {
             values.add("");
         }
 
         adapter = new GameAdapter(this, R.layout.game_grid, values);
-        tictactoe = new TicTacToe(this.computer, this.human, this.boardSize);
-        this.turn = turn;
+        tictactoe = new TicTacToe(this.computer, this.human);
 
         mainBoard.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void resetBoard() {
+        for (int i = 0; i < 9; i++) {
+            values.set(i, "");
+        }
+
+        this.turn = 1;
+
         adapter.notifyDataSetChanged();
     }
 
@@ -84,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         mainBoard = (GridView) findViewById(R.id.main_grid);
 
-        mainBoard.setNumColumns(this.boardSize);
-        this.initiateBoard(turn);
+        this.initiateBoard();
     }
 
     @Override
@@ -100,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.refresh:
-                this.initiateBoard(this.turn);
+                this.resetBoard();
                 break;
         }
 
