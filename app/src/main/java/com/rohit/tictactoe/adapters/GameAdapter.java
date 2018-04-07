@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.rohit.tictactoe.AIActivity;
 import com.rohit.tictactoe.MainActivity;
 import com.rohit.tictactoe.R;
 
@@ -47,10 +48,10 @@ public class GameAdapter extends ArrayAdapter<String> {
         box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((MainActivity) context).isHumanTurn()) {
-                    ((MainActivity) context).updateBoard(position);
+                if (((AIActivity) context).isHumanTurn()) {
+                    ((AIActivity) context).updateBoard(position);
 
-                    ((MainActivity) context).initiateComputerTurn();
+                    ((AIActivity) context).initiateComputerTurn();
                 }
             }
         });

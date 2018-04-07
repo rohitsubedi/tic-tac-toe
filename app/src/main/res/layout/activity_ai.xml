@@ -10,19 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.rohit.tictactoe.MainActivity">
 
-    <RelativeLayout
-        android:layout_width="300dp"
+    <GridView
+        android:id="@+id/main_grid"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/play_with_computer"
-            android:background="@drawable/btn_shape"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:text="@string/play_with_computer"/>
-    </RelativeLayout>
+        android:background="@color/colorPrimary"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:verticalSpacing="5dp"></GridView>
 </RelativeLayout>
