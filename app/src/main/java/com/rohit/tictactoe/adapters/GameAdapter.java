@@ -40,14 +40,14 @@ public class GameAdapter extends ArrayAdapter<String> {
         View rowView = inflater.inflate(this.resource, parent, false);
 
         RelativeLayout box = (RelativeLayout) rowView.findViewById(R.id.each_grid);
-        String value = this.values.get(position);
+        final String value = this.values.get(position);
         TextView text = (TextView) rowView.findViewById(R.id.grid_value);
 
         text.setText(String.valueOf(value));
         box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((AIActivity) context).isHumanTurn()) {
+                if (((AIActivity) context).isHumanTurn() && values.get(position).isEmpty()) {
                     ((AIActivity) context).updateBoard(position);
 
                     ((AIActivity) context).initiateComputerTurn();

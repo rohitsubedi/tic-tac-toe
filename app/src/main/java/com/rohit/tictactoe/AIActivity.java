@@ -2,7 +2,6 @@ package com.rohit.tictactoe;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
@@ -71,7 +70,6 @@ public class AIActivity extends AppCompatActivity {
         }
 
         gameValue = tictactoe.gameFinished(values);
-        Log.i("Value", String.valueOf(gameValue));
 
         if (gameValue == 10) {
             gameResult.setText("Computer won");
