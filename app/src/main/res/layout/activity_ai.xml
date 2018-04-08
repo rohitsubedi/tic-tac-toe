@@ -10,6 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.rohit.tictactoe.MainActivity">
 
+    <TextView
+        android:id="@+id/game_result"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Compute won"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <GridView
         android:id="@+id/main_grid"
         android:layout_width="fill_parent"
@@ -20,4 +31,6 @@
         android:horizontalSpacing="5dp"
         android:numColumns="3"
         android:verticalSpacing="5dp"></GridView>
+
+    <include layout="@layout/copyright"></include>
 </RelativeLayout>

@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Tic Tac Toe</string>
     <string name="play_with_computer">Play With Computer</string>
-    <string name="create_room">Create Room</string>
+    <string name="create_room">Play with Friend</string>
 </resources>

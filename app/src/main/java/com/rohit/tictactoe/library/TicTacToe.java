@@ -31,10 +31,8 @@ public class TicTacToe {
      * @param values
      * @return
      */
-    public boolean gameFinished(ArrayList<String> values) {
-        int winScore = this.winScore(values);
-
-        return winScore == 10 || winScore == -10;
+    public int gameFinished(ArrayList<String> values) {
+        return this.winScore(values);
     }
 
     /**

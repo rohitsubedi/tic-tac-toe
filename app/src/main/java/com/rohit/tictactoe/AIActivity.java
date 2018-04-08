@@ -2,9 +2,11 @@ package com.rohit.tictactoe;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.rohit.tictactoe.adapters.GameAdapter;
 import com.rohit.tictactoe.library.TicTacToe;
@@ -15,6 +17,7 @@ public class AIActivity extends AppCompatActivity {
     GridView mainBoard;
     ArrayList<String> values;
     GameAdapter adapter;
+    TextView gameResult;
     TicTacToe tictactoe;
     int turn = 1; // 1 for human and 0 for computer
     String human = "x";
@@ -37,6 +40,9 @@ public class AIActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * Reset Board
+     */
     private void resetBoard() {
         for (int i = 0; i < 9; i++) {
             values.set(i, "");
@@ -44,6 +50,7 @@ public class AIActivity extends AppCompatActivity {
 
         this.turn = 1;
 
+        gameResult.setVisibility(TextView.GONE);
         adapter.notifyDataSetChanged();
     }
 
@@ -53,13 +60,25 @@ public class AIActivity extends AppCompatActivity {
      * @param position
      */
     public void updateBoard(int position) {
-        if (!tictactoe.gameFinished(values)) {
+        int gameValue = tictactoe.gameFinished(values);
+        if (gameValue == 0) {
             if (values.get(position).isEmpty()) {
                 values.set(position, this.turn == 1 ? this.human : this.computer);
                 adapter.notifyDataSetChanged();
 
                 this.turn = (this.turn + 1) % 2;
             }
+        }
+
+        gameValue = tictactoe.gameFinished(values);
+        Log.i("Value", String.valueOf(gameValue));
+
+        if (gameValue == 10) {
+            gameResult.setText("Computer won");
+            gameResult.setVisibility(TextView.VISIBLE);
+        } else if (gameValue == -10) {
+            gameResult.setText("You won");
+            gameResult.setVisibility(TextView.VISIBLE);
         }
     }
 
@@ -89,6 +108,7 @@ public class AIActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ai);
 
         mainBoard = (GridView) findViewById(R.id.main_grid);
+        gameResult = (TextView) findViewById(R.id.game_result);
 
         this.initiateBoard();
     }
