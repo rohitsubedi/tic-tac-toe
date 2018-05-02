@@ -1,6 +1,6 @@
 # TIC TAC TOE
 
-App for Andriod to play tic tac toe. Initially it is only designed to play with computer. It uses minmax algorithm for determining to winning step for a computer player
+App for Andriod to play tic tac toe. Initially it is only designed to play with computer. It uses minimax algorithm for determining to winning step for a computer player
 
 ## TODO
 Add play with friend functionality
